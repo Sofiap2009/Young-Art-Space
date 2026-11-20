@@ -438,9 +438,9 @@ h2 {
 }
 
 .logo img {
-    width: 125px;
-    max-width: 125px;
-    height: 70px;
+    width: 150px;
+    max-width: 150px;
+    height: 85px;
     object-fit: contain;
     display: block;
 }
