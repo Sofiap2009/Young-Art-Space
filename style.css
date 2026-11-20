@@ -5,14 +5,15 @@
 :root {
   --fondo: #000000;
   --fondo-tarjetas: #111111;
-  --color-principal: #7b3fe4;
+  --color-principal: #ff2fd0;   /* rosa del logo */
   --color-secundario: #ff8c69;
   --color-texto: #ffffff;
   --color-suave: #bdbdbd;
   --color-borde: #2a2a2a;
+  --cafe-logo: #8f4a10;   /* cafe oscuro de la paleta del logo */
 
-  --color-azul: #1e90ff;      /* azul del título */
-  --verde-logo: #00c853;      /* cambia este valor por el verde de tu logo */
+  --color-azul: #1e90ff;
+  --verde-logo: #7ff00b;
 
   --fuente-titulos: "Trebuchet MS", sans-serif;
   --fuente-texto: Arial, sans-serif;
@@ -471,4 +472,16 @@ h1 {
 .boton-principal:hover {
   background: var(--color-secundario);
   border-color: var(--color-secundario);
+
+}
+
+/* ENCABEZADO Y PIE EN CAFÉ DEL LOGO */
+.encabezado {
+  background: var(--cafe-logo);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+}
+
+.pie {
+  background: var(--cafe-logo);
+  border-top: 1px solid rgba(0, 0, 0, 0.35);
 }
