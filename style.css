@@ -455,7 +455,7 @@ h1 {
 
 /* MENÚ EN VERDE DEL LOGO */
 .menu a {
-  color: var(--verde-logo);
+  color:#ffd400
 }
 
 .menu a:hover,
