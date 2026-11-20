@@ -3,19 +3,22 @@
    Cambia estos valores para personalizar la página
 ================================= */
 :root {
-  --fondo: #fff8f2;
-  --fondo-tarjetas: #ffffff;
+  --fondo: #000000;
+  --fondo-tarjetas: #111111;
   --color-principal: #7b3fe4;
   --color-secundario: #ff8c69;
-  --color-texto: #30283b;
-  --color-suave: #71677c;
-  --color-borde: #eee3f5;
+  --color-texto: #ffffff;
+  --color-suave: #bdbdbd;
+  --color-borde: #2a2a2a;
+
+  --color-azul: #1e90ff;      /* azul del título */
+  --verde-logo: #00c853;      /* cambia este valor por el verde de tu logo */
 
   --fuente-titulos: "Trebuchet MS", sans-serif;
   --fuente-texto: Arial, sans-serif;
 
   --radio: 20px;
-  --sombra: 0 10px 30px rgba(48, 40, 59, 0.08);
+  --sombra: 0 10px 30px rgba(255, 255, 255, 0.06);
 }
 
 * {
@@ -443,4 +446,29 @@ h2 {
     height: 85px;
     object-fit: contain;
     display: block;
+}
+/* TÍTULO "TU IMAGINACIÓN MERECE UN" EN AZUL */
+h1 {
+  color: var(--color-azul);
+}
+
+/* MENÚ EN VERDE DEL LOGO */
+.menu a {
+  color: var(--verde-logo);
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+  color: var(--color-texto);
+}
+
+/* AJUSTES PARA FONDO NEGRO */
+.pie {
+  background: #111111;
+  border-top: 1px solid var(--color-borde);
+}
+
+.boton-principal:hover {
+  background: var(--color-secundario);
+  border-color: var(--color-secundario);
 }
