@@ -485,3 +485,85 @@ h1 {
   background: var(--cafe-logo);
   border-top: 1px solid rgba(0, 0, 0, 0.35);
 }
+
+/* =================================
+   10. CUENTA DE USUARIO
+================================= */
+
+.cuenta-usuario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.enlace-login {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.enlace-login:hover {
+    color: var(--color-principal);
+}
+
+.boton-registro,
+.boton-cerrar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 17px;
+    border: 2px solid var(--color-principal);
+    border-radius: 999px;
+    background: var(--color-principal);
+    color: #ffffff;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.boton-registro:hover,
+.boton-cerrar:hover {
+    background: var(--color-secundario);
+    border-color: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
+.saludo-usuario {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* ADAPTACIÓN DEL ACCESO A CELULARES */
+@media (max-width: 800px) {
+    .cuenta-usuario {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .cuenta-usuario {
+        gap: 10px;
+    }
+
+    .boton-registro,
+    .boton-cerrar {
+        padding: 8px 13px;
+        font-size: 0.88rem;
+    }
+
+    ..saludo-usuario {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: capitalize;
+    letter-spacing: 0.2px;
+    transition: color 0.2s;
+} {
+        font-size: 0.88rem;
+    }
+}

@@ -153,3 +153,31 @@ button:hover {
         padding: 35px 25px;
     }
 }
+.campo-contrasena {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.campo-contrasena input {
+    width: 100%;
+    padding-right: 80px;
+}
+
+.campo-contrasena button {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    margin: 0;
+    padding: 12px 5px;
+    background: transparent;
+    color: #79518b;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+}
+
+.campo-contrasena button:hover {
+    background: transparent;
+    color: #493052;
+}

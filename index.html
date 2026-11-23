@@ -1,4 +1,5 @@
 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -10,21 +11,28 @@
 <body>
 
   <!-- ENCABEZADO Y MENÚ -->
-<header class="encabezado">
+  <header class="encabezado">
     <a class="logo" href="#inicio">
-        <img src="imagenes/logo-young-art-space.png" alt="Young Art Space">
+      <img src="imagenes/logo-young-art-space.png" alt="Young Art Space">
     </a>
 
     <nav class="menu" aria-label="Menú principal">
-        <a href="#inicio">Inicio</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#talleres">Talleres</a>
-        <a href="#galeria">Galería</a>
-        <a href="#contacto">Contacto</a>
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#talleres">Talleres</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
     </nav>
-</header>
+
+    <!-- ACCESO DE USUARIOS -->
+    <div class="cuenta-usuario" id="area-cuenta">
+      <a href="login.html" class="enlace-login">Iniciar sesión</a>
+      <a href="registro.html" class="boton-registro">Crear cuenta</a>
+    </div>
+  </header>
 
   <main>
+
     <!-- INICIO -->
     <section id="inicio" class="portada">
       <div class="portada-contenido">
@@ -42,7 +50,6 @@
       </div>
 
       <div class="portada-imagen">
-        <!-- Cambia esta imagen por una tuya -->
         <img src="imagenes/portada.jpg"
              alt="Espacio artístico con dibujos y materiales creativos">
       </div>
@@ -184,8 +191,10 @@
         <p id="respuesta-formulario" role="status" aria-live="polite"></p>
       </form>
     </section>
+
   </main>
 
+  <!-- PIE DE PÁGINA -->
   <footer class="pie">
     <a class="logo" href="#inicio">Young <span>Art Space</span></a>
     <p>Un espacio para imaginar, crear y compartir.</p>
@@ -194,5 +203,34 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- FUNCIONALIDAD DE LA CUENTA -->
+  <script>
+    const areaCuenta = document.getElementById("area-cuenta");
+    const nombreUsuario = localStorage.getItem("nombreUsuario");
+
+    if (nombreUsuario) {
+      areaCuenta.innerHTML = "";
+
+      const saludo = document.createElement("span");
+      saludo.className = "saludo-usuario";
+      saludo.textContent = "¡Hola, " + nombreUsuario + "!";
+
+      const botonCerrar = document.createElement("button");
+      botonCerrar.id = "cerrar-sesion";
+      botonCerrar.className = "boton-cerrar";
+      botonCerrar.textContent = "Cerrar sesión";
+
+      areaCuenta.appendChild(saludo);
+      areaCuenta.appendChild(botonCerrar);
+
+      botonCerrar.addEventListener("click", function() {
+        localStorage.removeItem("nombreUsuario");
+        window.location.reload();
+      });
+    }
+  </script>
+
 </body>
 </html>
+

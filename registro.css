@@ -1,0 +1,154 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8f2;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.contenedor-registro {
+    width: 100%;
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 10px 35px rgba(60, 35, 70, 0.12);
+}
+
+.panel-bienvenida {
+    background: #eadcf0;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo {
+    color: #493052;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.mensaje h1 {
+    color: #493052;
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.mensaje p {
+    color: #6e5975;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.panel-formulario {
+    padding: 40px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.panel-formulario h2 {
+    color: #493052;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    color: #887b8b;
+    margin-bottom: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #493052;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ded3e2;
+    border-radius: 9px;
+    margin-bottom: 17px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #79518b;
+}
+
+button {
+    background: #79518b;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 9px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+button:hover {
+    background: #624071;
+}
+
+.registro {
+    text-align: center;
+    margin-top: 22px;
+    color: #887b8b;
+}
+
+.registro a,
+.volver {
+    color: #79518b;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.volver {
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 15px;
+    }
+
+    .contenedor-registro {
+        grid-template-columns: 1fr;
+    }
+
+    .panel-bienvenida {
+        min-height: 210px;
+        padding: 30px;
+    }
+
+    .mensaje h1 {
+        font-size: 27px;
+        margin-top: 30px;
+    }
+
+    .panel-formulario {
+        padding: 30px 25px;
+    }
+}

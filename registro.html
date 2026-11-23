@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta | Young Art Space</title>
+    <link rel="stylesheet" href="registro.css">
+</head>
+<body>
+
+    <main class="contenedor-registro">
+
+        <section class="panel-bienvenida">
+            <a href="index.html" class="logo">Young Art Space</a>
+
+            <div class="mensaje">
+                <h1>¡Tu creatividad tiene un espacio!</h1>
+                <p>
+                    Forma parte de una comunidad donde las ideas,
+                    el arte y la imaginación se encuentran.
+                </p>
+            </div>
+        </section>
+
+        <section class="panel-formulario">
+
+            <h2>Crear una cuenta</h2>
+            <p class="subtitulo">Únete a nuestra comunidad creativa.</p>
+
+            <form id="formulario-registro">
+
+                <label for="nombre">Nombre completo</label>
+                <input
+                    type="text"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Escribe tu nombre"
+                    required
+                >
+
+                <label for="correo">Correo electrónico</label>
+                <input
+                    type="email"
+                    id="correo"
+                    name="correo"
+                    placeholder="nombre@correo.com"
+                    required
+                >
+
+                <label for="usuario">Nombre de usuario</label>
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Crea un usuario"
+                    required
+                >
+
+                <label for="contrasena">Contraseña</label>
+                <input
+                    type="password"
+                    id="contrasena"
+                    name="contrasena"
+                    placeholder="Crea una contraseña"
+                    required
+                >
+
+                <label for="confirmar-contrasena">
+                    Confirmar contraseña
+                </label>
+                <input
+                    type="password"
+                    id="confirmar-contrasena"
+                    name="confirmar-contrasena"
+                    placeholder="Repite tu contraseña"
+                    required
+                >
+
+                <button type="submit">Crear cuenta</button>
+
+            </form>
+
+            <p class="registro">
+                ¿Ya tienes una cuenta?
+                <a href="login.html">Inicia sesión</a>
+            </p>
+
+            <a href="index.html" class="volver">Volver al inicio</a>
+
+        </section>
+
+    </main>
+
+<script>
+    const formulario = document.getElementById("formulario-registro");
+
+    formulario.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const nombre = document.getElementById("nombre").value.trim();
+        const correo = document.getElementById("correo").value.trim();
+        const usuario = document.getElementById("usuario").value.trim();
+        const contrasena = document.getElementById("contrasena").value;
+        const confirmar = document.getElementById("confirmar-contrasena").value;
+
+        // Comprobar que las contraseñas coincidan
+        if (contrasena !== confirmar) {
+            alert("Las contraseñas no coinciden.");
+            return;
+        }
+
+        try {
+            const respuesta = await fetch("http://localhost:3000/api/usuarios/registro", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nombre,
+                    correo,
+                    usuario,
+                    contrasena
+                })
+            });
+
+            const resultado = await respuesta.json();
+
+            if (!respuesta.ok) {
+                throw new Error(resultado.mensaje);
+            }
+
+            alert(resultado.mensaje);
+            formulario.reset();
+
+        } catch (error) {
+            alert(error.message || "No se pudo conectar con el servidor.");
+        }
+    });
+</script>
+
+</body>
+</html>

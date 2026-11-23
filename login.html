@@ -26,6 +26,7 @@
         <section class="panel-formulario">
 
             <h2>Iniciar sesión</h2>
+
             <p class="subtitulo">Ingresa a tu espacio creativo.</p>
 
             <form id="formulario-login">
@@ -40,13 +41,20 @@
                 >
 
                 <label for="contrasena">Contraseña</label>
-                <input
-                    type="password"
-                    id="contrasena"
-                    name="contrasena"
-                    placeholder="Escribe tu contraseña"
-                    required
-                >
+
+                <div class="campo-contrasena">
+                    <input
+                        type="password"
+                        id="contrasena"
+                        name="contrasena"
+                        placeholder="Escribe tu contraseña"
+                        required
+                    >
+
+                    <button type="button" id="mostrar-contrasena">
+                        Mostrar
+                    </button>
+                </div>
 
                 <button type="submit">Iniciar sesión</button>
 
@@ -62,6 +70,58 @@
         </section>
 
     </main>
+
+    <script>
+        const contrasena = document.getElementById("contrasena");
+        const botonMostrar = document.getElementById("mostrar-contrasena");
+        const formulario = document.getElementById("formulario-login");
+
+        // Mostrar u ocultar contraseña
+        botonMostrar.addEventListener("click", function () {
+            if (contrasena.type === "password") {
+                contrasena.type = "text";
+                botonMostrar.textContent = "Ocultar";
+            } else {
+                contrasena.type = "password";
+                botonMostrar.textContent = "Mostrar";
+            }
+        });
+
+        // Iniciar sesión
+        formulario.addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const correo = document.getElementById("correo").value.trim();
+            const clave = contrasena.value;
+
+            try {
+                const respuesta = await fetch("http://localhost:3000/api/usuarios/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        correo: correo,
+                        contrasena: clave
+                    })
+                });
+
+                const resultado = await respuesta.json();
+
+                if (!respuesta.ok) {
+                    throw new Error(resultado.mensaje);
+                }
+                 localStorage.setItem("nombreUsuario", resultado.nombre);   
+                  
+                alert("¡Bienvenido/a, " + resultado.nombre + "!");
+
+                window.location.href = "index.html";
+
+            } catch (error) {
+                alert(error.message || "No se pudo conectar con el servidor.");
+            }
+        });
+    </script>
 
 </body>
 </html>
