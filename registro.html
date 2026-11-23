@@ -1,4 +1,5 @@
 
+<
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -69,6 +70,7 @@
                 <label for="confirmar-contrasena">
                     Confirmar contraseña
                 </label>
+
                 <input
                     type="password"
                     id="confirmar-contrasena"
@@ -92,52 +94,55 @@
 
     </main>
 
-<script>
-    const formulario = document.getElementById("formulario-registro");
+    <script>
+        const formulario = document.getElementById("formulario-registro");
 
-    formulario.addEventListener("submit", async function(event) {
-        event.preventDefault();
+        formulario.addEventListener("submit", async function(event) {
+            event.preventDefault();
 
-        const nombre = document.getElementById("nombre").value.trim();
-        const correo = document.getElementById("correo").value.trim();
-        const usuario = document.getElementById("usuario").value.trim();
-        const contrasena = document.getElementById("contrasena").value;
-        const confirmar = document.getElementById("confirmar-contrasena").value;
+            const nombre = document.getElementById("nombre").value.trim();
+            const correo = document.getElementById("correo").value.trim();
+            const usuario = document.getElementById("usuario").value.trim();
+            const contrasena = document.getElementById("contrasena").value;
+            const confirmar = document.getElementById("confirmar-contrasena").value;
 
-        // Comprobar que las contraseñas coincidan
-        if (contrasena !== confirmar) {
-            alert("Las contraseñas no coinciden.");
-            return;
-        }
-
-        try {
-            const respuesta = await fetch("http://localhost:3000/api/usuarios/registro", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nombre,
-                    correo,
-                    usuario,
-                    contrasena
-                })
-            });
-
-            const resultado = await respuesta.json();
-
-            if (!respuesta.ok) {
-                throw new Error(resultado.mensaje);
+            // Comprobar que las contraseñas coincidan
+            if (contrasena !== confirmar) {
+                alert("Las contraseñas no coinciden.");
+                return;
             }
 
-            alert(resultado.mensaje);
-            formulario.reset();
+            try {
+                const respuesta = await fetch(
+                    "https://young-art-space-api.onrender.com/api/usuarios/registro",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            nombre,
+                            correo,
+                            usuario,
+                            contrasena
+                        })
+                    }
+                );
 
-        } catch (error) {
-            alert(error.message || "No se pudo conectar con el servidor.");
-        }
-    });
-</script>
+                const resultado = await respuesta.json();
+
+                if (!respuesta.ok) {
+                    throw new Error(resultado.mensaje);
+                }
+
+                alert(resultado.mensaje);
+                formulario.reset();
+
+            } catch (error) {
+                alert(error.message || "No se pudo conectar con el servidor.");
+            }
+        });
+    </script>
 
 </body>
 </html>

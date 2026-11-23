@@ -26,7 +26,6 @@
         <section class="panel-formulario">
 
             <h2>Iniciar sesión</h2>
-
             <p class="subtitulo">Ingresa a tu espacio creativo.</p>
 
             <form id="formulario-login">
@@ -95,24 +94,28 @@
             const clave = contrasena.value;
 
             try {
-                const respuesta = await fetch("http://localhost:3000/api/usuarios/login", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        correo: correo,
-                        contrasena: clave
-                    })
-                });
+                const respuesta = await fetch(
+                    "https://young-art-space-api.onrender.com/api/usuarios/login",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            correo: correo,
+                            contrasena: clave
+                        })
+                    }
+                );
 
                 const resultado = await respuesta.json();
 
                 if (!respuesta.ok) {
                     throw new Error(resultado.mensaje);
                 }
-                 localStorage.setItem("nombreUsuario", resultado.nombre);   
-                  
+
+                localStorage.setItem("nombreUsuario", resultado.nombre);
+
                 alert("¡Bienvenido/a, " + resultado.nombre + "!");
 
                 window.location.href = "index.html";
@@ -125,3 +128,4 @@
 
 </body>
 </html>
+
